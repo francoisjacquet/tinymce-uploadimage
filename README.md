@@ -1,6 +1,16 @@
 UploadImage, a TinyMCE plugin
 =============================
 
+![screenshot](https://raw.githubusercontent.com/francoisjacquet/tinymce-uploadimage/master/screenshot.png)
+
+https://github.com/francoisjacquet/tinymce-uploadimage
+
+Version 0.1 - January, 2017
+
+License GNU GPL v2
+
+Author François Jacquet
+
 This plugin allows users to upload images which are directly placed into the text area.
 
 Technically speaking, the image is automatically converted to base64 code. No images are uploaded to the server. The image data is directly placed inside the `src` of the HTML image tag.
