@@ -18,6 +18,40 @@
 					ed.windowManager.close();
 				};
 
+
+				/**
+				 * Load Image file (from input)
+				 * and get the base64 encoded image data.
+				 *
+				 * @link http://stackoverflow.com/questions/6978156/get-base64-encode-file-data-from-input-form
+				 *
+				 * @param  {String}   input    Input ID.
+				 * @param  {Function} callback Callback function to call when file has loaded to send it the base64.
+				 *
+				 * @return {Function}          The callback function result.
+				 */
+				var getBase64FromInput = function( input, callback ) {
+
+					var filesSelected = document.getElementById( input ).files;
+
+					if ( filesSelected.length > 0 )
+					{
+						var fileToLoad = filesSelected[0],
+							fileReader = new FileReader();
+
+						fileReader.readAsDataURL(fileToLoad);
+
+						fileReader.onload = function(fileLoadedEvent) {
+
+							return callback( fileLoadedEvent.target.result );
+						};
+					}
+					else
+					{
+						return callback( false );
+					}
+				};
+
 				ed.windowManager.open({
 					title:'Upload Image',
 					body:[{
@@ -61,36 +95,3 @@
 	tinymce.PluginManager.add('uploadimage', tinymce.plugins.UploadImagePlugin);
 })();
 
-
-/**
- * Load Image file (from input)
- * and get the base64 encoded image data.
- *
- * @link http://stackoverflow.com/questions/6978156/get-base64-encode-file-data-from-input-form
- *
- * @param  {String}   input    Input ID.
- * @param  {Function} callback Callback function to call when file has loaded to send it the base64.
- *
- * @return {Function}          The callback function result.
- */
-function getBase64FromInput( input, callback )
-{
-	var filesSelected = document.getElementById( input ).files;
-
-	if ( filesSelected.length > 0 )
-	{
-		var fileToLoad = filesSelected[0],
-			fileReader = new FileReader();
-
-		fileReader.readAsDataURL(fileToLoad);
-
-		fileReader.onload = function(fileLoadedEvent) {
-
-			return callback( fileLoadedEvent.target.result );
-		};
-	}
-	else
-	{
-		return callback( false );
-	}
-}
