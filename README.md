@@ -47,9 +47,18 @@ tinymce.init({
 
 base64 encoded images are larger than its couterpart file.
 
-Browsers may have image size limitations (around 8.5Mb).
+Browsers _may_ have image size limitations (around 8.5Mb).
 
 If saved to DB, you may end up storing lots of data...
+
+## Demo
+
+You can test this plugin within [RosarioSIS](https://github.com/francoisjacquet/rosariosis/).
+Go to the [demo site](https://www.rosariosis.org/demo/), login as `administrator`, then browse to _Students > Print Letters_.
+
+## Save base64 image to disk
+
+RosarioSIS can automatically save base64 images to disk, thanks to [this function](https://github.com/francoisjacquet/rosariosis/blob/mobile/ProgramFunctions/MarkDownHTML.fnc.php#L158) which detects and extracts base64 images in the TinyMCE HTML; and [this function](https://github.com/francoisjacquet/rosariosis/blob/mobile/ProgramFunctions/FileUpload.fnc.php#L99) which actually uploads the image to the server.
 
 ## Credits
 
